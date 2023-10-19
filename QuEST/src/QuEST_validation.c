@@ -659,7 +659,7 @@ void validateNumPauliSumTerms(int numTerms, const char* caller) {
 void validateOneQubitKrausMapDimensions(Qureg qureg, ComplexMatrix2* ops, int numOps, const char* caller) {
     int opNumQubits = 1;
     int superOpNumQubits = 2*opNumQubits;
-    int maxNumOps = superOpNumQubits*superOpNumQubits;
+    int maxNumOps = superOpNumQubits*superOpNumQubits+2;
     QuESTAssert(numOps > 0 && numOps <= maxNumOps, E_INVALID_NUM_ONE_QUBIT_KRAUS_OPS, caller);
     
     validateMultiQubitMatrixFitsInNode(qureg, superOpNumQubits, caller);
@@ -673,7 +673,7 @@ void validateOneQubitKrausMap(Qureg qureg, ComplexMatrix2* ops, int numOps, cons
 void validateTwoQubitKrausMapDimensions(Qureg qureg, ComplexMatrix4* ops, int numOps, const char* caller) {
     int opNumQubits = 2;
     int superOpNumQubits = 2*opNumQubits;
-    int maxNumOps = superOpNumQubits*superOpNumQubits;
+    int maxNumOps = superOpNumQubits*superOpNumQubits+2;
     QuESTAssert(numOps > 0 && numOps <= maxNumOps, E_INVALID_NUM_TWO_QUBIT_KRAUS_OPS, caller);
     
     validateMultiQubitMatrixFitsInNode(qureg, superOpNumQubits, caller);
@@ -687,7 +687,7 @@ void validateTwoQubitKrausMap(Qureg qureg, ComplexMatrix4* ops, int numOps, cons
 void validateMultiQubitKrausMapDimensions(Qureg qureg, int numTargs, ComplexMatrixN* ops, int numOps, const char* caller) {
     int opNumQubits = numTargs;
     int superOpNumQubits = 2*opNumQubits;
-    int maxNumOps = superOpNumQubits*superOpNumQubits;
+    int maxNumOps = superOpNumQubits*superOpNumQubits+2;
     QuESTAssert(numOps>0 && numOps <= maxNumOps, E_INVALID_NUM_N_QUBIT_KRAUS_OPS, caller);
         
     for (int n=0; n<numOps; n++) {
